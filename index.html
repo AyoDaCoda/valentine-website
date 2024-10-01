@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Kay's Baby</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="icon" href="images/icons8-heart-642.png" type="image/x-icon">
+</head>
+<body>
+    <div class="contain">
+        <p>My little Expression of LOVE</p>
+        <div class="container">
+            <div class="valentines">
+                <div class="envelope">
+                    <a href="#" class="letter"> <!-- Changed href from "" to "#" for consistency -->
+                        <p>A Love letter</p>
+                        <img src="images/pngwing.com.png" alt="lipstick stain">        
+                    </a>
+                    <div href="#" class="media">
+                        <a>Open</a>
+                    </div>
+                </div>
+                <div class="envelope_bottom"></div>
+            </div>
+            <div class="shadow"></div>
+    
+            <img class="bg_img" src="images/pngwing.com (1).png" alt="">
+        </div>
+    </div>
+
+    <div class="letter_contents">
+        <a href="#" class="close-btn"><ion-icon name="close-outline"></ion-icon></a> <!-- Changed href from "" to "#" for consistency -->
+        <div>
+            <p class="start_txt">My Dearest,</p>
+
+               <p>From the moment I met you, I knew my heart had found a place to call home. Your presence brings a warmth and light into my life that I never knew was missing. Every moment with you is a reminder of how deeply love can transform the ordinary into something extraordinary. Your smile, your laugh, and the way you look at me make my world brighter, and I find myself constantly longing to be near you, to share in every little joy and sorrow that life brings our way.</p>
+                
+               <p>You’ve taught me that love is more than just a feeling; it’s a commitment to care, to understand, and to always stand by each other. With you, I’ve found a partner who listens without judgment and loves without condition. The trust and comfort we share make me believe that together, we can conquer anything. Every day, I’m grateful for the bond we’ve built, a love that grows stronger with every passing moment.</p>
+                
+               <p>I want you to know that no matter what the future holds, my love for you will remain unwavering. You are my heart’s desire, my greatest joy, and the person I want to grow old with. Together, we’ll write a story filled with laughter, adventure, and endless love. I cherish you more than words could ever express.</p>
+            <p class="end_txt">~Your Love</p>
+        </div>
+    </div>
+    <div class="media_stuff">
+        <a href="#" class="close-btn2"><ion-icon name="close-outline"></ion-icon></a> <!-- Changed href from "" to "#" for consistency -->
+        <div class="photos">
+            <img src="images/love1.jpg" alt="Kalaria picture 1">
+            <video id="myVideo" width="274" height="500" controls preload="metadata" autoplay loop muted>
+                <source src="images/233399_small.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+            </video>
+            <img class="animated" src="images/love2.jpg" alt="Kalaria picture 2">
+            <p>I love you soo much 😘</p>
+        </div>        
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const letter = document.querySelector('.letter');
+            const letterContents = document.querySelector('.letter_contents');
+            const closeBtn = document.querySelector('.close-btn');
+            const closeBtn2 = document.querySelector('.close-btn2');
+            const bodyy = document.querySelector('body');
+            const media = document.querySelector('.media_stuff');
+            const media_ppr = document.querySelector('.media');
+
+            letter.addEventListener('click', function(event) {
+                event.preventDefault();
+                letterContents.style.visibility = 'visible'; // Set visibility to visible when showing
+                letterContents.classList.add('show');
+                bodyy.style.overflow = 'scroll';
+            });
+
+            closeBtn.addEventListener('click', function(event) { // Added event parameter
+                event.preventDefault();
+                letterContents.classList.remove('show');
+                bodyy.style.overflow = 'hidden';
+            });
+
+            letterContents.addEventListener('transitionend', function() {
+                if (!letterContents.classList.contains('show')) {
+                    letterContents.style.visibility = 'hidden'; // Set visibility to hidden after transition ends
+                }
+            });
+
+            media_ppr.addEventListener('click', function(event) {
+                event.preventDefault();
+                media.style.visibility = 'visible'; // Set visibility to visible when showing
+                media.classList.add('show');
+                document.getElementById('myVideo').muted = false;
+            });
+
+            closeBtn2.addEventListener('click', function(event) { // Added event parameter
+                event.preventDefault();
+                media.classList.remove('show');
+                document.getElementById('myVideo').muted = true;
+            });
+
+            media.addEventListener('transitionend', function() {
+                if (!media.classList.contains('show')) {
+                    media.style.visibility = 'hidden'; // Set visibility to hidden after transition ends
+                }
+            });
+
+            document.addEventListener('mousemove', function(e) {
+                let body = document.querySelector('body');
+                let heart = document.createElement('span');
+                let x = e.offsetX;
+                let y = e.offsetY;
+                heart.style.left = x + 'px';
+                heart.style.top = y + 'px';
+
+                let size = Math.random() * 80;
+                heart.style.width = 20 + size + 'px';
+                heart.style.height = 20 + size + 'px';
+
+                let transformValue = Math.random() * 360;
+                heart.style.transform = 'rotate(' + transformValue + 'deg)';
+
+                body.appendChild(heart);
+
+                setTimeout(function() {
+                    heart.remove();
+                }, 1000);
+            });
+        });
+    </script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
